@@ -1,0 +1,37 @@
+package sample;
+
+import java.util.Iterator;
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class amazon {
+
+	public static void main(String[] args) {
+		System.setProperty("webdriver.chrome.driver","C:\\file chrome\\chromedriver.exe");
+	     WebDriver driver1=new ChromeDriver(); 
+	   
+	    
+	     	    driver1.get("https://www.amazon.in");
+	     	    driver1.manage().window().maximize();
+	     	    driver1.findElement(By.id("twotabsearchtextbox")).click();
+	     	    driver1.findElement(By.id("twotabsearchtextbox")).sendKeys("phones");
+	     	    driver1.findElement(By.id("nav-search-submit-button")).click();
+	     	    driver1.findElement(By.xpath("//*[contains(@href,'A09896231VKU8RR4K7KCQ')]")).click();
+	     	    Set<String> allWindowHandles = driver1.getWindowHandles();
+	     	    Iterator<String> it=allWindowHandles.iterator();
+	     	    String parid=it.next();
+	     	    String chid=it.next();
+	     	   
+	     	    driver1.switchTo().window(chid);
+	     	    driver1.findElement(By.xpath("//input[@name='submit.add-to-cart']")).click();
+	     	
+	     	    driver1.findElement(By.xpath("//span[@class='a-button-inner']//child:: input[@class='a-button-input']")).click();
+	     	}
+
+	     
+
+	}
+
